@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Organizer</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Edit Event</h1>
+
+    <form action="/organizer/edit/<%= data._id %>" method="post">
+      Title<br>
+      <input type="text" name="title" value="<%= data.title %>"></input><br><br>
+      Name<br>
+      <input type="text" name="name" value="<%= data.name %>"></input><br><br>
+      Date<br>
+      <input type="text" name="date" value="<%= data.date %>"></input><br><br>
+      Email<br>
+      <input type="text" name="email" value="<%= data.email %>"></input><br><br>
+      <br>
+      <button type="submit">SUBMIT</button>
+    </form><br><br>
+  </body>
+</html>

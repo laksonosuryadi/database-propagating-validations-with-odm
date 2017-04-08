@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form action="/organizer" method="post">
+      Title<br>
+      <input type="text" name="title"><br><br>
+      Name<br>
+      <input type="text" name="name"><br><br>
+      Date<br>
+      <input type="date" name="date"><br><br>
+      Email<br>
+      <input type="email" name="email"><br><br>
+      <br>
+      <button type="submit">SUBMIT</button>
+    </form>
+
+    <% if(error) { %>
+      <p><h2>Error: </h2><br><%= error %>
+      <br><br>
+      <a href="/organizer">BACK</a>
+      </p>
+    <% } else { %>
+      <br><br>
+      <table border="1">
+        <thead>
+          <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < data.length; i++){ %>
+          <tr>
+            <td><%= data[i]._id %></td>
+            <td><%= data[i].title %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].date %></td>
+            <td><%= data[i].email %></td>
+            <td><a href='/organizer/edit/<%= data[i]._id %>'>Edit</a> | <a href='/organizer/delete/<%= data[i]._id %>'>Delete</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    <% } %>
+  </body>
+</html>
